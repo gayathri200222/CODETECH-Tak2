@@ -1,0 +1,72 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class StudentGradeManager {
+    private List<Double> grades;
+    private Scanner scanner;
+
+    public StudentGradeManager() {
+        grades = new ArrayList<>();
+        scanner = new Scanner(System.in);
+    }
+
+    // Method to input grades
+    public void inputGrades() {
+        System.out.println("Enter the number of grades you want to input:");
+        int numGrades = scanner.nextInt();
+        scanner.nextLine();  // Consume newline
+
+        for (int i = 0; i < numGrades; i++) {
+            System.out.println("Enter grade " + (i + 1) + ":");
+            double grade = scanner.nextDouble();
+            scanner.nextLine();  // Consume newline
+            grades.add(grade);
+        }
+    }
+
+    // Method to calculate the average grade
+    public double calculateAverage() {
+        if (grades.isEmpty()) return 0;
+
+        double sum = 0;
+        for (double grade : grades) {
+            sum += grade;
+        }
+        return sum / grades.size();
+    }
+
+    // Method to get the letter grade
+    public String getLetterGrade(double average) {
+        if (average >= 90) return "A";
+        if (average >= 80) return "B";
+        if (average >= 70) return "C";
+        if (average >= 60) return "D";
+        return "F";
+    }
+
+    // Method to display the results
+    public void displayResults() {
+        double average = calculateAverage();
+        String letterGrade = getLetterGrade(average);
+
+        System.out.println("Average Grade: " + average);
+        System.out.println("Letter Grade: " + letterGrade);
+        System.out.println("GPA: " + calculateGPA(average));
+    }
+
+    // Method to calculate GPA (Assuming a 4.0 scale for simplicity)
+    public double calculateGPA(double average) {
+        if (average >= 90) return 4.0;
+        if (average >= 80) return 3.0;
+        if (average >= 70) return 2.0;
+        if (average >= 60) return 1.0;
+        return 0.0;
+    }
+
+    public static void main(String[] args) {
+        StudentGradeManager manager = new StudentGradeManager();
+        manager.inputGrades();
+        manager.displayResults();
+    }
+}
