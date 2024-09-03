@@ -21,3 +21,4 @@ Calculate Average: It calculates the average of the input grades.
 Determine Letter Grade and GPA: Based on the average, it determines the corresponding letter grade (A, B, C, D, F) and calculates the GPA.
 
 Display Results: The program then displays the average grade, the letter grade, and the GPA to the user.
+![Screenshot 2024-09-03 161951](https://github.com/user-attachments/assets/c9da7d77-1357-468e-bd47-e28ec1934438)
